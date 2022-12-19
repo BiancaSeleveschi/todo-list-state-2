@@ -4,9 +4,30 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    todos: [
+      {
+        title: "curatenie",
+        isDone: false,
+      },
+      {
+        title: "spalat haine",
+        isDone: false,
+      },
+    ],
+  },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_NEW_TODO(state, todo) {
+      state.todos.push(todo);
+    },
+  },
+  actions: {
+    addNewTodo(context, todo) {
+      if (todo.title !== "") {
+        context.commit("ADD_NEW_TODO", todo);
+      }
+    },
+  },
   modules: {},
 });
